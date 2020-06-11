@@ -5,3 +5,7 @@ services:
     image: benlirio/download-pdf
     ports:
       - 8080:8080
+    volumes:
+      - type: bind
+        source: ./src/public/
+        target: /run/app/download-pdf/src/public/

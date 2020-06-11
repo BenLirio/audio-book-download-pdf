@@ -4,8 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-    Index
+    <form
+      id="pdf-input"
+      action="/profile"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="avatar" />
+      <input type="submit" value="submit" />
+    </form>
+    <script>
+      //   $("#pdf-input").on("submit", (e) => {
+      //     e.preventDefault();
+      //     console.log(e);
+      //   });
+    </script>
   </body>
 </html>

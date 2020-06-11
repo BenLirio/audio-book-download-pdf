@@ -5,12 +5,13 @@ const upload = multer({ dest: "uploads/" });
 
 app.use(express.static(__dirname + "/public"));
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.sendfile(__dirname + "/public/index.html");
 });
 
 app.post("/profile", upload.single("avatar"), (req, res, next) => {
-  console.log(req.file);
+  console.log("file: ", req.file && req.file.originalname);
+  res.send("file uploaded");
 });
 
 app.listen(8080, () => {
