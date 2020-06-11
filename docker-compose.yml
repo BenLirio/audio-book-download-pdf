@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  download-pdf:
+    build: ./
+    image: benlirio/download-pdf
+    ports:
+      - 8080:8080
