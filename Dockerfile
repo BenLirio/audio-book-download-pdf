@@ -14,4 +14,4 @@ COPY --from=builder /run/app/download-pdf/node_modules ./node_modules
 
 COPY ./src ./src
 
-RUN ["node", "src/server.js"]
+CMD ["node", "src/server.js"]
