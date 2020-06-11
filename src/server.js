@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 
 app.post("/profile", upload.single("avatar"), (req, res, next) => {
   console.log("file: ", req.file && req.file.originalname);
-  res.send("file uploaded");
+  res.sendfile(__dirname + "/public/uploaded.html");
 });
 
 app.listen(8080, () => {
