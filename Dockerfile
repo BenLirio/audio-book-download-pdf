@@ -2,7 +2,7 @@ FROM node AS builder
 
 WORKDIR /run/app/download-pdf
 
-COPY package*.json ./
+COPY package.json ./
 
 RUN npm i
 
