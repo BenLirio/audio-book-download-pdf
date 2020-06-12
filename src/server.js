@@ -12,7 +12,14 @@ app.get("/", (req, res) => {
 
 app.post("/profile", upload.single("avatar"), (req, res, next) => {
   console.log("file: ", req.file && req.file.originalname);
-  const client = net.connect({ port: 8080, host: "pdf-to-text" }, () => {
+
+  const socket = new net.Socket({ writable: true });
+  const options = {
+    port: 8080,
+    host: "pdf-to-text",
+  };
+  socket.connect(options);
+  socket.on("connect", () => {
     console.log("connected to server!");
     res.sendfile(__dirname + "/public/uploaded.html");
   });
