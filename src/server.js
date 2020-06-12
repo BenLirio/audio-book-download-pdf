@@ -21,7 +21,10 @@ app.post("/profile", upload.single("avatar"), (req, res, next) => {
   socket.connect(options);
   socket.on("connect", () => {
     console.log("connected to server!");
-    res.sendfile(__dirname + "/public/uploaded.html");
+    socket.write("from download-pdf", "utf-8", (err) => {
+      console.log("write to server");
+      res.sendfile(__dirname + "/public/uploaded.html");
+    });
   });
 });
 
