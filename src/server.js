@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const app = express();
 const upload = multer({ dest: "uploads/" });
+const net = require("net");
 
 app.use(express.static(__dirname + "/public"));
 
@@ -11,7 +12,10 @@ app.get("/", (req, res) => {
 
 app.post("/profile", upload.single("avatar"), (req, res, next) => {
   console.log("file: ", req.file && req.file.originalname);
-  res.sendfile(__dirname + "/public/uploaded.html");
+  const client = net.connect({ port: 8080, host: "pdf-to-text" }, () => {
+    console.log("connected to server!");
+    res.sendfile(__dirname + "/public/uploaded.html");
+  });
 });
 
 app.listen(8080, () => {
